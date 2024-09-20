@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import Product from './components/Product';
+import productdata from './components/ProductData';
+import { responsive } from './components/ProductData';
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Carousel showDots={true} responsive={responsive}   >
+        {
+          productdata.map((item)=>{
+             return <Product image={item.image} name={item.name} price={item.price} description={item.description}/>
+          })
+        }
+       
+      </Carousel>
+
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
